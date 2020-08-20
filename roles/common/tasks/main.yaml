@@ -1,0 +1,25 @@
+---
+
+- name: "Set demo facts"
+  set_fact:
+    demo_hosting_api_fqdn: "{{ demo_hosting_api_fqdn }}"
+    demo_projectname: "{{ demo_projectname }}"
+    demo_username: "{{ demo_username }}" 
+    demo_token: "{{ demo_token }}" 
+    scm_url: "{{ demo_scm_url | regex_replace('^([^#]+)#?.*', '\\1') }}"
+    scm_ref: "{{ demo_scm_url | regex_replace('^[^#]+#?(.*)$', '\\1') }}"
+
+- name: "Use a unique temporary file to store the git source"
+  tempfile:
+    state: directory
+    prefix: labsdemo
+  register: tmp_output
+
+- name: "Store the temp file name for the demo json"
+  set_fact:
+    demo_src_tree: "{{ tmp_output.path }}"
+
+- name: "Store the demo inventory directory"
+  set_fact:
+    demo_src_inventory: "{{ demo_src_tree }}{{ inventory_sub_dir }}"
+
