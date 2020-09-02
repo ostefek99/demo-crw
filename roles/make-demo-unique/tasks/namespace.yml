@@ -45,4 +45,3 @@
   - content.1.value|trim != ''
   loop_control:
     loop_var: content
-

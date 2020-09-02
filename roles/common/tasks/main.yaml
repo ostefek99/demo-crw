@@ -12,7 +12,7 @@
 - name: "Use a unique temporary file to store the git source"
   tempfile:
     state: directory
-    prefix: labsdemo
+    prefix: labsdemocrw
   register: tmp_output
 
 - name: "Store the temp file name for the demo json"
@@ -22,4 +22,3 @@
 - name: "Store the demo inventory directory"
   set_fact:
     demo_src_inventory: "{{ demo_src_tree }}{{ inventory_sub_dir }}"
-

@@ -9,4 +9,3 @@
   - item.state == 'file'
   - item.src is defined
   - (item.src.find('.yml') == (item.src|length - 4) or item.src.find('.yaml') == (item.src|length - 5))
-

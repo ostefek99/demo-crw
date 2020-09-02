@@ -10,5 +10,3 @@
   when:
   - item.state == 'file'
   - item.src is defined
-
-
